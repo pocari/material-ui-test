@@ -2,7 +2,7 @@ import React, { FC, useState, useCallback } from 'react';
 import Header from './header';
 import DrawerLeft from './drawer';
 import clsx from 'clsx';
-import { Typography, createStyles, makeStyles } from '@material-ui/core';
+import {createStyles, makeStyles } from '@material-ui/core';
 import * as DrawerConstants from './drawerConstants'
 
 const useStyles = makeStyles((theme) =>
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) =>
 
 const Layout: FC<{}> = ({children}) => {
   const classes = useStyles();
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(true);
 
   const handleDrawerOpen = useCallback(() => {
     setDrawerOpen(true);
