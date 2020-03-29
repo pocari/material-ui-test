@@ -1,4 +1,4 @@
-import React, { FC, useState, useCallback } from 'react';
+import React, { FC } from 'react';
 import Header from './header';
 import DrawerLeft from './drawer';
 import clsx from 'clsx';
@@ -37,18 +37,19 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 
-const Layout: FC<{}> = ({children}) => {
+interface LayoutProps {
+  drawerOpen: boolean;
+  handleDrawerOpen: () => void;
+  handleDrawerClose: () => void;
+}
+
+const Layout: FC<LayoutProps> = ({
+  drawerOpen = true,
+  handleDrawerOpen = () => {},
+  handleDrawerClose = () => {},
+  children,
+}) => {
   const classes = useStyles();
-  const [drawerOpen, setDrawerOpen] = useState(true);
-
-  const handleDrawerOpen = useCallback(() => {
-    setDrawerOpen(true);
-  }, []);
-
-  const handleDrawerClose = useCallback(() => {
-    setDrawerOpen(false);
-  }, []);
-
   return (
     <div className={classes.root}>
       <Header drawerOpen={drawerOpen} handleDrawerOpen={handleDrawerOpen} />
